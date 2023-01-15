@@ -1,4 +1,4 @@
-package dev.rivu.plugins
+package dev.rivu.rivutalks.plugins
 
 import io.ktor.server.plugins.cachingheaders.*
 import io.ktor.http.content.*
@@ -18,7 +18,4 @@ fun Application.configureHTTP() {
         }
     }
     install(ConditionalHeaders)
-    /*routing {
-        swaggerUI(path = "openapi")
-    }*/
 }

@@ -6,6 +6,7 @@ import io.ktor.server.testing.*
 import kotlin.test.*
 import io.ktor.http.*
 import dev.rivu.plugins.*
+import dev.rivu.rivutalks.plugins.configureRouting
 
 class ApplicationTest {
     @Test

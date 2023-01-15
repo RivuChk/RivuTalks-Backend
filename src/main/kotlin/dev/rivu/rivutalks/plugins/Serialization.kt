@@ -1,4 +1,4 @@
-package dev.rivu.plugins
+package dev.rivu.rivutalks.plugins
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.plugins.contentnegotiation.*
