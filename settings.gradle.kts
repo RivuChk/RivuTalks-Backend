@@ -1,0 +1,1 @@
+rootProject.name = "rivu-talks-backend"
