@@ -9,5 +9,5 @@ import org.koin.dsl.module
 val blogsModule = module {
     single { BlogsController(get()) }
     single { BlogsService(get()) }
-    single<BlogsRepository> { BlogsRepositoryImpl() }
+    single<BlogsRepository> { BlogsRepositoryImpl(get()) }
 }
