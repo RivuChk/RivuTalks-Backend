@@ -15,7 +15,7 @@ plugins {
 group = "dev.rivu"
 version = "0.0.1"
 application {
-    mainClass.set("dev.rivu.ApplicationKt")
+    mainClass.set("dev.rivu.rivutalks.ApplicationKt")
 
     val isDevelopment: Boolean = true
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
