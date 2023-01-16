@@ -58,3 +58,5 @@ dependencies {
 
     implementation("com.zaxxer:HikariCP:$hikari_version")
 }
+
+tasks.getByName("build").finalizedBy("installDist")

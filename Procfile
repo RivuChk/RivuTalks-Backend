@@ -1,0 +1,1 @@
+web: build/install/rivu-talks-backend/bin/rivu-talks-backend
