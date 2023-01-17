@@ -75,6 +75,10 @@ class BlogsDaoImpl : BlogsDao {
         }
     }
 
+    override suspend fun getBlog(blogId: String): Blog = transaction {
+        EntityBlog[UUID.fromString(blogId)].toModel()
+    }
+
     override fun createSite(site: AddSite): EntitySite {
         return EntitySite.new {
             title = site.title

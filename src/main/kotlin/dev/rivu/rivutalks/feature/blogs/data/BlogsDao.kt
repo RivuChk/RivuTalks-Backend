@@ -13,6 +13,7 @@ interface BlogsDao {
     suspend fun getBlogsForSite(site: Site): List<Blog>
     suspend fun getAllSites(): Map<Site, List<Blog>>
     suspend fun getSitesById(siteId: String): Pair<Site, List<Blog>>
+    suspend fun getBlog(blogId: String): Blog
     fun createSite(site: AddSite): EntitySite
     fun findSite(site: AddSite): EntitySite?
 }
