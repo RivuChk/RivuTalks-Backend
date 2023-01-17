@@ -10,6 +10,7 @@ plugins {
     kotlin("jvm") version "1.8.0"
     id("io.ktor.plugin") version "2.2.2"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.0"
+    kotlin("kapt") version "1.8.0"
 }
 
 group = "dev.rivu"
@@ -35,6 +36,7 @@ dependencies {
     implementation("io.ktor:ktor-server-swagger:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktor_version")
+    implementation("io.ktor:ktor-serialization-kotlinx-xml:$ktor_version")
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-locations:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
@@ -57,6 +59,11 @@ dependencies {
     implementation("io.insert-koin:koin-logger-slf4j:$koin_ktor_version")
 
     implementation("com.zaxxer:HikariCP:$hikari_version")
+
+    //RSS parser
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.7")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0")
+    implementation("com.fasterxml.woodstox:woodstox-core:6.2.5")
 }
 
 tasks.getByName("build").finalizedBy("installDist")

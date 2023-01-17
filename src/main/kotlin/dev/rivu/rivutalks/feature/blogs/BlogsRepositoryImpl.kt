@@ -34,4 +34,8 @@ class BlogsRepositoryImpl(private val blogsDao: BlogsDao) : BlogsRepository {
     override suspend fun getSitesById(siteId: String): Pair<Site, List<Blog>> {
         return blogsDao.getSitesById(siteId)
     }
+
+    override suspend fun addBlogs(addBlogList: List<AddBlog>): List<String> {
+        return blogsDao.addBlogs(addBlogList)
+    }
 }

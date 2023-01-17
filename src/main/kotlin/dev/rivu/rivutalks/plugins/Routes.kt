@@ -1,6 +1,7 @@
 package dev.rivu.rivutalks.plugins
 
 import dev.rivu.rivutalks.feature.blogs.BlogsApi
+import dev.rivu.rivutalks.feature.syncrss.SyncRssApi
 import io.ktor.server.locations.*
 import io.ktor.server.routing.*
 
@@ -18,9 +19,13 @@ object RivuTalksRoutes {
         @Location("{siteId}")
         data class BySiteId(val siteId: String)
     }
+
+    @Location("sync-rss/{syncKey}")
+    data class SyncRss(val syncKey: String)
 }
 
 
 fun Routing.MainRoute() {
     BlogsApi()
+    SyncRssApi()
 }

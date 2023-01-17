@@ -5,6 +5,7 @@ import io.ktor.server.config.*
 class Config constructor(config: ApplicationConfig) {
 
     val DATABASE_HOST = config.property("database.host").getString()
+    val SYNC_KEY = config.property("key.sync").getString()
     val DATABASE_PORT = config.property("database.port").getString()
     val DATABASE_NAME = config.property("database.name").getString()
     val DATABASE_USER = config.property("database.user").getString()

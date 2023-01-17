@@ -52,12 +52,14 @@ class BlogsDaoImpl : BlogsDao {
             }
     }
 
-    override suspend fun addBlog(blog: AddBlog): Pair<Site, List<Blog>> = transaction {
+    override suspend fun addBlog(blog: AddBlog): String = transaction {
         val siteEntity = findSite(blog.site) ?: createSite(blog.site)
 
-        val checkExisting = EntityBlog.find {
+        val existingBlogs = EntityBlog.find {
             Blogs.url eq blog.url
-        }.empty()
+        }
+
+        val checkExisting = existingBlogs.empty()
 
         if (checkExisting) {
             EntityBlog.new {
@@ -68,10 +70,16 @@ class BlogsDaoImpl : BlogsDao {
                 featureImage = blog.featureImage
                 summary = blog.summary
             }
-        }
+        } else {
+            existingBlogs.first()
+        }.id.value.toString()
 
-        siteEntity.toModel() to EntityBlog.find { Blogs.site eq siteEntity.id }.map {
-            it.toModel()
+
+    }
+
+    override suspend fun addBlogs(blogs: List<AddBlog>): List<String> {
+        return blogs.map { blog ->
+            addBlog(blog)
         }
     }
 

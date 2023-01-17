@@ -1,5 +1,6 @@
 package dev.rivu.rivutalks.feature.blogs
 
+import dev.rivu.rivutalks.feature.blogs.models.AddBlog
 import dev.rivu.rivutalks.feature.blogs.models.Blog
 import dev.rivu.rivutalks.feature.blogs.models.Site
 
@@ -18,5 +19,9 @@ class BlogsService(private val blogsRepository: BlogsRepository) {
     }
     suspend fun getSitesById(siteId: String): Pair<Site, List<Blog>> {
         return blogsRepository.getSitesById(siteId)
+    }
+
+    suspend fun addBlogs(list: List<AddBlog>): List<String> {
+        return blogsRepository.addBlogs(list)
     }
 }
