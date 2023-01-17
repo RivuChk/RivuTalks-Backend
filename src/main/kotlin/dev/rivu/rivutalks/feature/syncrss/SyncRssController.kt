@@ -19,7 +19,6 @@ import java.net.URL
 import java.text.SimpleDateFormat
 
 class SyncRssController(
-    //private val parser: Parser<RivuChannel>,
     private val blogsService: BlogsService
 ) {
 
