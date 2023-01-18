@@ -10,15 +10,15 @@ import io.ktor.server.application.*
 import io.ktor.server.locations.*
 import io.ktor.server.routing.*
 import io.ktor.server.routing.application
+import org.koin.core.qualifier.named
 import org.koin.ktor.ext.inject
 
 fun Route.SyncRssApi() {
     val controller by inject<SyncRssController>()
+    val syncKey by inject<String>(named("sync_key"))
 
     get<RivuTalksRoutes.SyncRss> { request ->
-        val config = application.environment.config
-        val SYNC_KEY = config.config("key").property("sync").getString()
-        if (SYNC_KEY.equals(request.syncKey)) {
+        if (syncKey.equals(request.syncKey)) {
             returnResponse(controller.getAllRss())
         } else {
             returnResponse(Unsuccessful(AuthenticationException("not autthenticated"), HttpStatusCode.Forbidden))

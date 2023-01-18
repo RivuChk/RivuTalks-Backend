@@ -19,7 +19,8 @@ import java.net.URL
 import java.text.SimpleDateFormat
 
 class SyncRssController(
-    private val blogsService: BlogsService
+    private val blogsService: BlogsService,
+    private val dateFormatter: SimpleDateFormat
 ) {
 
     suspend fun getAllRss(): HttpResponse<BlogListResponse> = handleResponse {
@@ -35,7 +36,6 @@ class SyncRssController(
         }
 
         try {
-            val dateFormatter = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzzz")
 
             val kotlinModule = KotlinModule.Builder()
                 .build()

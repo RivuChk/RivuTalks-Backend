@@ -21,8 +21,11 @@ fun main(args: Array<String>): Unit = EngineMain.main(args)
 fun Application.module() {
 // Install Ktor features
     install(Koin) {
+        val mainAppModule = org.koin.dsl.module {
+            single { environment }
+        }
         slf4jLogger()
-        modules(blogsModule, blogsDataModule, syncRssModule)
+        modules(mainAppModule, appModule, blogsModule, blogsDataModule, syncRssModule)
     }
 
     configureHTTP()
