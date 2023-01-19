@@ -3,14 +3,16 @@ package dev.rivu.rivutalks.db
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import dev.rivu.rivutalks.db.table.Blogs
+import dev.rivu.rivutalks.db.table.Channels
 import dev.rivu.rivutalks.db.table.Sites
+import dev.rivu.rivutalks.db.table.Videos
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import javax.sql.DataSource
 
 fun initDatabase(DBConfig: DBConfig) {
-    val tables = arrayOf(Blogs, Sites)
+    val tables = arrayOf(Blogs, Sites, Videos, Channels)
 
     Database.connect(createDataSource(DBConfig))
 

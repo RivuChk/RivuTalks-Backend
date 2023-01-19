@@ -25,7 +25,7 @@ fun Application.module() {
             single { environment }
         }
         slf4jLogger()
-        modules(mainAppModule, appModule, blogsModule, blogsDataModule, syncRssModule)
+        modules(mainAppModule, *koinModules)
     }
 
     configureHTTP()
