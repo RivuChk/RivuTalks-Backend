@@ -43,18 +43,18 @@ class VideosnChannelsDAOImpl : VideosnChannelsDAO {
         when (content) {
             is VideoContent.Video -> transaction {
                 EntityVideo.new {
-                    url = url
-                    title = title
-                    description = description
-                    featured = featured
+                    url = content.url
+                    title = content.title
+                    description = content.description
+                    featured = content.featured
                 }
             }
             is VideoContent.Channel -> transaction {
                 EntityChannel.new {
-                    url = url
-                    title = title
-                    description = description
-                    featured = featured
+                    url = content.url
+                    title = content.title
+                    description = content.description
+                    featured = content.featured
                 }
             }
         }
