@@ -3,11 +3,15 @@ package dev.rivu.rivutalks.feature.videos.data
 import dev.rivu.rivutalks.db.entity.EntityChannel
 import dev.rivu.rivutalks.db.entity.EntityVideo
 import dev.rivu.rivutalks.db.entity.toModel
+import dev.rivu.rivutalks.db.table.Channels
 import dev.rivu.rivutalks.db.table.Videos
 import dev.rivu.rivutalks.feature.videos.model.VideoContent
+import org.jetbrains.exposed.sql.Expression
+import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import toModel
 import java.util.*
+import javax.swing.SortOrder
 
 class VideosnChannelsDAOImpl : VideosnChannelsDAO {
     override suspend fun getVideo(id: String): VideoContent = transaction {
@@ -27,15 +31,19 @@ class VideosnChannelsDAOImpl : VideosnChannelsDAO {
     }
 
     override suspend fun getAllChannels(): List<VideoContent> = transaction {
-        EntityChannel.all().map {
-            it.toModel()
-        }
+        EntityChannel.all()
+            .sortedByDescending { it.featured }
+            .map {
+                it.toModel()
+            }
     }
 
     override suspend fun getAllVideos(): List<VideoContent> = transaction {
-        EntityVideo.all().map {
-            it.toModel()
-        }
+        EntityVideo.all()
+            .sortedByDescending { it.featured }
+            .map {
+                it.toModel()
+            }
     }
 
     override suspend fun addVideoChannel(content: VideoContent) {
