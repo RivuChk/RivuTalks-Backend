@@ -17,7 +17,7 @@ version = "0.0.1"
 application {
     mainClass.set("dev.rivu.rivutalks.ApplicationKt")
 
-    val isDevelopment: Boolean = true
+    val isDevelopment: Boolean = false
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
