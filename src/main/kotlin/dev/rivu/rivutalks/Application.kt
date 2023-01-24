@@ -5,6 +5,7 @@ import dev.rivu.rivutalks.db.initDatabase
 import dev.rivu.rivutalks.feature.blogs.data.blogsDataModule
 import dev.rivu.rivutalks.feature.blogs.di.blogsModule
 import dev.rivu.rivutalks.feature.syncrss.di.syncRssModule
+import dev.rivu.rivutalks.plugins.configureCORS
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -31,6 +32,7 @@ fun Application.module() {
     configureHTTP()
     configureSerialization()
     configureRouting()
+    configureCORS()
 
     init()
 }

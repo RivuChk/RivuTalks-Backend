@@ -59,6 +59,9 @@ dependencies {
 
     implementation("com.zaxxer:HikariCP:$hikari_version")
 
+    //CORS
+    implementation("io.ktor:ktor-server-cors:$ktor_version")
+
     //RSS parser
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.0")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0")
