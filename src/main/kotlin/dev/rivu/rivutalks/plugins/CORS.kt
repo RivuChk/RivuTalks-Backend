@@ -13,7 +13,7 @@ fun Application.configureCORS() {
     install(CORS) {
         allowedOrigins.forEach {
             allowHost(it)
+            allowHeader(HttpHeaders.ContentType)
         }
-        allowHeader(HttpHeaders.ContentType)
     }
 }
