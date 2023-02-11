@@ -12,8 +12,11 @@ fun Application.configureCORS() {
     }
     install(CORS) {
         allowedOrigins.forEach {
-            allowHost(it)
+            allowHost(host = it, schemes = listOf("http", "https"))
             allowHeader(HttpHeaders.ContentType)
+        }
+        allowedOrigins.forEach {
+            println("allowed origins $it")
         }
     }
 }
