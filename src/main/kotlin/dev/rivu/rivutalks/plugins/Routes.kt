@@ -1,6 +1,8 @@
 package dev.rivu.rivutalks.plugins
 
+import dev.rivu.rivutalks.core.Paths
 import dev.rivu.rivutalks.feature.blogs.BlogsApi
+import dev.rivu.rivutalks.feature.entrypoints.EntryPointAPI
 import dev.rivu.rivutalks.feature.syncrss.SyncRssApi
 import dev.rivu.rivutalks.feature.videos.model.VideosApi
 import io.ktor.server.locations.*
@@ -8,7 +10,7 @@ import io.ktor.server.routing.*
 
 @Location("/api/v1")
 object RivuTalksRoutes {
-    @Location("blogs")
+    @Location(Paths.Blogs)
     object Blogs {
         @Location("site/{siteId}")
         data class BySiteId(val siteId: String)
@@ -17,7 +19,7 @@ object RivuTalksRoutes {
         data class Blog(val blogId: String)
     }
 
-    @Location("videos")
+    @Location(Paths.Videos)
     object Videos {
         @Location("{videoId}")
         data class GetVideo(val videoId: String)
@@ -26,10 +28,10 @@ object RivuTalksRoutes {
         object AddVideo
     }
 
-    @Location("videocontents")
+    @Location(Paths.VideoContents)
     object VideosNChannels
 
-    @Location("channels")
+    @Location(Paths.Channels)
     object Channels {
         @Location("{channelId}")
         data class GetChannel(val channelId: String)
@@ -38,7 +40,7 @@ object RivuTalksRoutes {
         object AddChannel
     }
 
-    @Location("sites")
+    @Location(Paths.Sites)
     object Sites {
         @Location("{siteId}")
         data class BySiteId(val siteId: String)
@@ -46,6 +48,9 @@ object RivuTalksRoutes {
 
     @Location("sync-rss/{syncKey}")
     data class SyncRss(val syncKey: String)
+
+    @Location("entry-points")
+    object EntryPoint
 }
 
 
@@ -53,4 +58,5 @@ fun Routing.MainRoute() {
     BlogsApi()
     SyncRssApi()
     VideosApi()
+    EntryPointAPI()
 }

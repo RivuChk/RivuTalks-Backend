@@ -37,7 +37,7 @@ fun Route.VideosApi() {
     }
 
     get<RivuTalksRoutes.Channels.GetChannel> {
-        returnResponse(controller.getVideo(it.channelId))
+        returnResponse(controller.getChannel(it.channelId))
     }
 
     post<RivuTalksRoutes.Videos.AddVideo> {
