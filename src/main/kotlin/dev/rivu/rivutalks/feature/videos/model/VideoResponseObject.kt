@@ -12,6 +12,7 @@ data class VideoResponseModel(
     val type: ContentType,
     val isYoutube: Boolean,
     val cover: String?,
+    val embedUrl: String?,
 )
 
 @Serializable

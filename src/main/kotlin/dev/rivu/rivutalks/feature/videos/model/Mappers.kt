@@ -62,6 +62,7 @@ fun VideoContent.toResponse(): VideoResponseModel {
             is VideoContent.Video -> ContentType.VIDEO
             is VideoContent.Channel -> ContentType.CHANNEL
         },
+        embedUrl = if (this is VideoContent.Video) buildDefaultYTEmbedUrl(url) else null
     )
 }
 
@@ -105,4 +106,17 @@ fun buildDefaultYTCoverImage(
         ""
     }
     "https://i3.ytimg.com/vi/$youtubeVideoId/maxresdefault.jpg"
+}
+
+fun buildDefaultYTEmbedUrl(
+    url: String
+): String = url.let {
+    val youtubeVideoId = if (it.contains("youtube.com/watch?v=", ignoreCase = true)) {
+        it.substringAfter("youtube.com/watch?v=")
+    } else if (it.contains("youtu.be", ignoreCase = true)) {
+        it.substringAfter("youtu.be/")
+    } else {
+        ""
+    }
+    "https://www.youtube.com/embed/$youtubeVideoId"
 }
