@@ -9,7 +9,9 @@ data class VideoResponseModel(
     val title: String,
     val description: String?,
     val featured: Boolean,
-    val type: ContentType
+    val type: ContentType,
+    val isYoutube: Boolean,
+    val cover: String?,
 )
 
 @Serializable

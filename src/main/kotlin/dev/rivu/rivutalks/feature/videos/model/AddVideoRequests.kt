@@ -8,6 +8,8 @@ sealed class AddVideoChannelRequest {
     abstract val title: String
     abstract val description: String?
     abstract val featured: Boolean
+    abstract val isYoutube: Boolean
+    abstract val cover: String?
 
     @Serializable
     data class AddVideoRequest(
@@ -15,6 +17,8 @@ sealed class AddVideoChannelRequest {
         override val title: String,
         override val description: String?,
         override val featured: Boolean,
+        override val isYoutube: Boolean,
+        override val cover: String?,
     ): AddVideoChannelRequest()
 
     @Serializable
@@ -23,5 +27,7 @@ sealed class AddVideoChannelRequest {
         override val title: String,
         override val description: String?,
         override val featured: Boolean,
+        override val isYoutube: Boolean,
+        override val cover: String?,
     ): AddVideoChannelRequest()
 }

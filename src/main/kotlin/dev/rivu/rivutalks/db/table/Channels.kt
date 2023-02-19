@@ -1,6 +1,5 @@
 package dev.rivu.rivutalks.db.table
 
-import dev.rivu.rivutalks.db.table.Videos.uniqueIndex
 import org.jetbrains.exposed.dao.id.UUIDTable
 
 object Channels : UUIDTable() {
@@ -8,4 +7,6 @@ object Channels : UUIDTable() {
     val url = varchar("url", length = 250).uniqueIndex()
     val description = text("description").nullable()
     val featured = bool("featured").index()
+    val cover = varchar("cover", length = 250).nullable()
+    val isYoutube = bool("isyoutube").default(defaultValue = true)
 }
