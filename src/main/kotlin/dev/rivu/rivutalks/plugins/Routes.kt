@@ -1,6 +1,7 @@
 package dev.rivu.rivutalks.plugins
 
 import dev.rivu.rivutalks.core.Paths
+import dev.rivu.rivutalks.feature.aboutme.AboutMeAPI
 import dev.rivu.rivutalks.feature.blogs.BlogsApi
 import dev.rivu.rivutalks.feature.entrypoints.EntryPointAPI
 import dev.rivu.rivutalks.feature.syncrss.SyncRssApi
@@ -51,6 +52,9 @@ object RivuTalksRoutes {
 
     @Location("entry-points")
     object EntryPoint
+
+    @Location("about-me")
+    object AboutMe
 }
 
 
@@ -59,4 +63,5 @@ fun Routing.MainRoute() {
     SyncRssApi()
     VideosApi()
     EntryPointAPI()
+    AboutMeAPI()
 }

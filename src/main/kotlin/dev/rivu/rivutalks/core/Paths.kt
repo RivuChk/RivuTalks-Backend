@@ -6,4 +6,5 @@ object Paths {
     const val VideoContents = "videocontents"
     const val Channels = "channels"
     const val Sites = "sites"
+    const val AboutMe = "about-me"
 }

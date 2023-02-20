@@ -59,6 +59,13 @@ class EntrypointsController {
                 shoudShowinNav = true,
             )
         )
+        entryPoints.add(
+            EntryPointItem(
+                name = "About Me",
+                rootPath = Paths.AboutMe,
+                shoudShowinNav = true,
+            )
+        )
         //End-TODO: Replace till here with dynamic Entry Points
 
         Success(
